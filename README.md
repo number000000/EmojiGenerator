@@ -20,11 +20,14 @@ Run this line in terminal
 ```
 pip install Pillow
 ```
+## Usage
+Be sure to have both .py files and data folder in the same directory. Run the program and follow the prompt in the terminal.
 
-## Example Outputs
+## Sample Outputs
 Emojis **with** background colors: \
 <img src="examples/face1.png" width="500px" /> \
 <img src="examples/face3.png" width="500px" /> \
 Emojis **without** background colors: \
 <img src="examples/face_nobg3.png" width="500px" /> \
-<img src="examples/face_nobg5.png" width="500px" />
+<img src="examples/face_nobg5.png" width="500px" /> \
+See more sample outputs in [examples](https://github.com/number000000/EmojiGenerator/tree/master/examples) folder
