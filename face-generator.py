@@ -1,6 +1,8 @@
 """
 Written by Meihui Liu
-An Emoji Generator adapted from a VIS 142 Image Generator Demo For A01 & A02 (by TA: Mingyong Cheng)
+An Emoji Generator 
+
+References: VIS 142 Image Generator Demo For A01 & A02 by TA: Mingyong Cheng
 """
 
 # Import Modules
@@ -39,7 +41,7 @@ else:
     used_color = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
 screen.fill((used_color[0], used_color[1], used_color[2]))
 
-# make sure that the face won't exceed the size of the canvas
+# Make sure that the face won't exceed the size of the canvas
 radius = screen_wide / 4
 if radius * 2 > screen_high:
     radius = screen_high / 4
@@ -49,7 +51,7 @@ center_y = screen_high / 2
 IMAGE_SIZE = (radius, radius) # a variable used to scale the image
 
 # A function for generate the color of the face randomly
-def draw():
+def draw_face():
     #choose the face color
     color = (0, 0, 0)
     color_list = list(color)
@@ -63,11 +65,11 @@ def draw():
     # making sure that the circle would not be exceed the edge of the page  
     pygame.draw.circle(screen, color, (center_x, center_y), radius)
 
-# call the function to draw
-draw()
+# Call the function to draw
+draw_face()
 
 
-# load face components
+# Load face components
 eye1 = pygame.image.load(os.path.join('data', 'eye1.png'))
 eye2 = pygame.image.load(os.path.join('data', 'eye2.png'))
 eye3 = pygame.image.load(os.path.join('data', 'eye3.png'))
@@ -110,6 +112,7 @@ out_of_words = pygame.image.load(os.path.join('data/garnish', 'out-of-words.png'
 sleepyy = pygame.image.load(os.path.join('data/garnish', 'sleepy.png'))
 sweat = pygame.image.load(os.path.join('data/garnish', 'sweat.png'))
 garnishes = [angry, bling, lotsoflove, exclamation, love, out_of_words, sleepyy, sweat]
+
 
 def draw_left_eye():
     left_eye = random.choice(eyes_left)
@@ -157,7 +160,7 @@ def draw_garnish():
 
 
 # A wrapper function that call sub-functions to draw eyes and mouth(or no mouth)
-def face_draw():
+def face_elements():
     draw_left_eye()
     draw_right_eye()
     if random.randint(0,1):
@@ -165,14 +168,15 @@ def face_draw():
     if random.randint(2,3):
         draw_garnish()
 
-face_draw()
+face_elements()
+
 
 # Update the display
 pygame.display.update()
 
 n = 1
 
-# infinite run
+# Infinite run
 while True:
     fileName = "face{}.png"
     fileName = fileName.format(n)
