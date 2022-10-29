@@ -27,13 +27,13 @@ try:
     screen_high = (int)(input("The height of the canvas(in pixels): "))
     rm_bg = (int)(input("Do you want to make the background color transparent?(y=1/n=0): "))
 except ValueError:
-    print("invalid input")
+    print("Invalid input")
     exit_program()
 screen = pygame.display.set_mode((screen_wide, screen_high), pygame.SRCALPHA)
 pygame.display.set_caption('Emoji Generator')
 screen = pygame.display.get_surface()
-if rm_bg != 0 or rm_bg != 1:
-    print("invalid input: should be either 0 or 1")
+if rm_bg != 0 and rm_bg != 1:
+    print("Invalid input: should be either 0 or 1")
     exit_program()
 if rm_bg:
     used_color = [9, 255, 0]
@@ -165,7 +165,7 @@ def face_elements():
     draw_right_eye()
     if random.randint(0,1):
         draw_mouth()
-    if random.randint(2,3):
+    if random.randint(0,1):
         draw_garnish()
 
 face_elements()
@@ -173,6 +173,7 @@ face_elements()
 
 # Update the display
 pygame.display.update()
+
 
 n = 1
 
@@ -185,9 +186,7 @@ while True:
         fileName = "face{}.png"
         fileName = fileName.format(n)
         pygame.image.save(screen, fileName)
-        print("export image:", fileName)
-        if rm_bg:
-            rm.remove_background(fileName, used_color)
+        print("Export image:", fileName)
         pygame.display.set_caption(fileName)
         running = True
         # Keep Displaying the window until close it manually
@@ -195,5 +194,11 @@ while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+        # Remove the background color
+        if rm_bg:
+            rm.remove_background(fileName, used_color)
+            os.remove(fileName)
+            print("Removed image with background: ", fileName)
+            print("Image without background generated successfully")
         exit_program()
     n += 1
