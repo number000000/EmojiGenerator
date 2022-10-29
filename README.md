@@ -21,7 +21,7 @@ Run this line in terminal
 pip install Pillow
 ```
 ## Usage
-Be sure to have both .py files and data folder in the same directory. Run the program and follow the prompt in the terminal.
+Be sure to have both `.py` files and `data` folder in the same directory. Run `face-generator.py` and follow the prompt in the terminal.
 
 ## Sample Outputs
 Emojis **with** background colors: \
