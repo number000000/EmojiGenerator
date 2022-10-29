@@ -1,4 +1,4 @@
-# Face Emoji Generator
+# Emoji Face Generator
 ## Project Description
 *A VIS142 Project* 
 
